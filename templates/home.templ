@@ -1,9 +1,25 @@
 package templates
 
-templ Home() {
-	<h1>URL Shortener</h1>
-	<form action="/shorten" method="post">
-		<input placeholder="Your long URL" name="url" />
-		<button>Shorten</button>
-	</form>
+templ Home(url string) {
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/static/styles.css" />
+        <title>URL Shortener</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>URL Shortener</h1>
+            <form action="/shorten" method="POST">
+                <label for="original-url">Enter your URL:</label>
+                <input type="url" id="original-url" name="url" required />
+                <button type="submit">Shorten URL</button>
+            </form>
+            <div class="shortened-url">{ url }</div>
+        </div>
+    </body>
+</html>
+
 }
